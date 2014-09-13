@@ -20,8 +20,17 @@ Usage
 
 Sample usage:
 
-    `WASTE_URL_PARTS='["vk.com", "pikabu.ru"]' python activity_daemon.py`
+    WASTE_URL_PARTS='["vk.com", "pikabu.ru"]' python activity_daemon.py
 
+`statistics.py` get week statistics and prints it to stdout.
+
+Sample output:
+
+    WEEK STATISTICS.
+
+    Total logged: 17 min
+        Work time: 8 min
+        Procastinated: 9 min
 
 Configuration
 -------------
@@ -29,6 +38,8 @@ Configuration
 All configurations values are stored as environment variables.
 
 * `DEBUG` - turns on debug output, etc.
+
+* `SLEEP_TIME_SECONDS` - period of logging
 
 * `DB_NAME, DB_USER, DB_PASSWORD` - database access.
 
