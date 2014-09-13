@@ -13,6 +13,16 @@ Requirements
 MacOS only for now.
 
 
+Usage
+-----
+
+`activity_daemon.py` runs infinite loop with logging action.
+
+Sample usage:
+
+    `WASTE_URL_PARTS='["vk.com", "pikabu.ru"]' python activity_daemon.py`
+
+
 Configuration
 -------------
 
