@@ -1,4 +1,7 @@
+MySQL-python==1.2.5
 appscript==1.0.1
+gnureadline==6.3.3
+ipython==2.2.0
 pync==1.4
 python-dateutil==2.2
 six==1.8.0
