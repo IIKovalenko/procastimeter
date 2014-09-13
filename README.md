@@ -26,7 +26,7 @@ Sample usage:
 
 Sample output:
 
-    WEEK STATISTICS.
+    WEEK STATISTICS
 
     Total logged: 17 min
         Work time: 8 min
