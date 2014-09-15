@@ -21,8 +21,36 @@ def create_db_table():
                 page_url CHAR(255),
                 is_work_page BOOLEAN
             );
+            CREATE TABLE host_data (
+              host CHAR(255),
+              is_work_host BOOLEAN,
+              category CHAR(255)
+            );
         """
     )
+
+
+def get_host_info(host_name, create_nonexisting=True):
+    db = create_db_connection()
+    cursor = db.cursor()
+    cursor.execute(
+        'SELECT host, is_work_host FROM host_data WHERE host=%s;',
+        (host_name,)
+    )
+    raw_data = cursor.fetchall()
+    if create_nonexisting and not raw_data:
+        execute_single_db_query(
+            'INSERT INTO host_data (host, is_work_host) VALUES (%s, %s)',
+            (host_name, None)
+        )
+    db.close()
+    if raw_data and raw_data[0][1]:
+        return {
+            'host': raw_data[0][0],
+            'is_work_host': raw_data[0][1],
+        }
+    else:
+        return None
 
 
 def execute_single_db_query(query, query_args=None, commit_required=True):

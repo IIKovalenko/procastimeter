@@ -1,6 +1,7 @@
 #coding: utf-8
+import urlparse
 import appscript
-from mysql import save_page_data_to_mysql
+from mysql import save_page_data_to_mysql, get_host_info
 import settings
 
 
@@ -33,4 +34,6 @@ def is_appropriate_page(page_data):
     """
         Return True if page considered as working page
     """
-    return any([keyword in page_data['url'] for keyword in settings.WASTE_URL_PARTS])
+    host = urlparse.urlparse(page_data['url'])[1]
+    host_info = get_host_info(host)
+    return host_info['is_work_host'] if host_info else False

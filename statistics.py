@@ -43,7 +43,10 @@ def get_statistics(time_from_now_days=7, processed=True):
 
 
 def process_raw_data(raw_data):
-    data = {d[0]: d[1] * settings.SLEEP_TIME_SECONDS / 60 for d in raw_data}
+    if raw_data:
+        data = {d[0]: d[1] * settings.SLEEP_TIME_SECONDS / 60 for d in raw_data}
+    else:
+        data = {0: 0, 1: 0}
     return {
         'total_logged': sum(data.values()),
         'total_work_time': data[1],
